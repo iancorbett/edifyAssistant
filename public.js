@@ -1,4 +1,4 @@
-export const KB = [
+ const KB = [
 
     // 🟢 Onboarding
     {
