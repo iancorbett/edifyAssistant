@@ -5,13 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edify Assistant</title>
     <link rel="stylesheet" href="styles.css" />
-    
+
     <!-- TF.js + Universal Sentence Encoder -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder@1.3.3/dist/universal-sentence-encoder.min.js"></script>
 </head>
 <body>
-    
+      <main class="wrap">
+    <h1 class="title"> Edify Help Bot </h1>
+    <section class="card">
+      <p class="hint">Type a question.</p>
+
+      <div id="chat" class="chat" role="log" aria-live="polite"></div>
+
+      <div class="inputRow">
+        <input id="msg" type="text" placeholder="Ask something like “how do I reset my password?”" autocomplete="off" />
+        <button id="send" type="button">Send</button>
+      </div>
+    </section>
+  </main>
 
     <script src="public.js"></script>
 </body>
