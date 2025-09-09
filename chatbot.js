@@ -1,3 +1,5 @@
+import { KB } from "./public";
+
 const chatEl = document.getElementById("chat");
 const msgEl = document.getElementById("msg");
 const sendBtn = document.getElementById("send");
