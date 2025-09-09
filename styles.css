@@ -1,0 +1,107 @@
+:root{ /* essentially global variables that can be reused later*/
+    --bg:#0b1020;
+    --card:#121a33;
+    --text:#e7ecff;
+    --muted:#9fb0ff;
+    --border:#1f2b5f;
+  }
+
+  * { box-sizing:border-box; } /*The browser shrinks the content area inside so padding/border fit*/
+
+  html, body { /* target both html and body at once, body is only as tall as its content, setting height to 100%
+    makes it as tall as it parent which is 100, so we need to set html to 100% to stretch to viewport height */
+    height: 100%; /* can also do min-height: 100vh; */
+  }
+
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color:var(--text);
+    background: radial-gradient(1000px 600px at 20% -10%, #1b2555, var(--bg));
+    display:grid;
+    place-items:center; /*same as saying align items: center and justify items: center*/
+    padding:16px;
+  }
+
+  .wrap {
+    width: min(900px, 92vw); /* chooses smaller value, on larger screens maxes at 900, on smaller screens we 
+    choose 92% instead of exact pixel amount */
+  }
+
+            /*clamp(min, preferred, max), title resizes, but not too drastically*/
+  .title{ font-size:clamp(22px,3.5vw,32px); margin:24px 0 12px; letter-spacing:.2px; }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:18px;
+    box-shadow:0 10px 30px #0006;
+  }
+
+  .hint{ color:var(--muted); font-size:12px; margin:8px 2px 14px; }
+
+  .chat{
+    height:min(60vh, 580px); /*choose lower value*/
+    overflow:auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding-right:4px;
+    margin-bottom:12px;
+  }
+  
+  .row{ display:flex; gap:10px; align-items:flex-start; } /* creates flex container, align to top of container*/
+
+  .bot,.me{
+  padding:12px 14px;
+  border-radius:14px;
+  max-width:76%;
+  white-space:pre-wrap;
+  line-height:1.4;
+  }
+
+  .bot{ background:#0e1633; border:1px solid #21306a; }
+
+  .me{ margin-left:auto; background:#182750; border:1px solid #2a3c7a; }
+
+  .inputRow{ display:flex; gap:10px; }
+
+  input[type="text"]{
+    flex:1; /* input expands and takes up all remaining space, all other elements stay at their natural width*/
+    padding:12px 14px;
+    border-radius:12px;
+    border:1px solid #2a3c7a;
+    background:#0d1530;
+    color:var(--text);
+  }
+
+  input::placeholder{ color:#b9c6ff88; }
+
+  button{
+  padding:12px 16px;
+  border-radius:12px;
+  border:1px solid #2a3c7a;
+  background:linear-gradient(160deg, #1a2a66, #243987);
+  color:#fff;
+  cursor:pointer;
+  }
+
+  button:active{ transform:translateY(1px); }
+
+  .row.system{ justify-content:center; } /* centers spinner in middle of chat*/
+
+.spinner{
+  width:14px; height:14px;
+  border:2px solid #4d66c7;
+  border-top-color:transparent;
+  border-radius:50%;
+  animation:spin .8s linear infinite; /* rotates smoothly forever*/
+}
+
+@keyframes spin{ to{ transform:rotate(360deg); } } /* Starts at rotate(0deg) → ends at rotate(360deg) */
+
+@media (prefers-reduced-motion: reduce){ /* allows users to stop the spinning*/
+  .spinner{ animation:none; }
+  button:active{ transform:none; }
+}
