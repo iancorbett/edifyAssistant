@@ -38,3 +38,9 @@ function cosineSim(a, b) { //a and b are arrays (vectors), each is 512 numbers l
     console.log(`Indexed ${kbIndex.length} KB items.`);
   }
   await buildIndex();
+
+  function topK(queryEmb, k = 3) {//selects top 3 matches
+    const scored = kbIndex.map(x => ({ ref: x.ref, score: cosineSim(queryEmb, x.emb) }));//map through each index in knowledge base and run similarity function to determine how similar each kb index is to the query
+    scored.sort((a, b) => b.score - a.score);//sort from most to least similar
+    return scored.slice(0, k);//takes first three from the sorted array
+  }
