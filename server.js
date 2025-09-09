@@ -29,3 +29,12 @@ function cosineSim(a, b) { //a and b are arrays (vectors), each is 512 numbers l
     });
     return res.data.map(d => d.embedding); //Extracts just the .embedding array (the vector of floats)
   }
+
+  let kbIndex = [];
+  async function buildIndex() {//build an embedding index of your KB (so queries can be matched quickly)
+    const texts = KB.map(x => x.q + '\n' + (x.a || '')); //For each entry, it takes the question (q) plus the answer (a), joined with a newline (\n)
+    const embs = await embedAll(texts); //Returns an array of embeddings (each is a 1536-number vector from text-embedding-3-small)
+    kbIndex = embs.map((emb, i) => ({ ref: KB[i], emb }));//Loops through each embedding (emb) with its index i
+    console.log(`Indexed ${kbIndex.length} KB items.`);
+  }
+  await buildIndex();
