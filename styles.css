@@ -3,7 +3,7 @@
     --card:#121a33;
     --text:#e7ecff;
     --muted:#9fb0ff;
-    --border:#1f2b5f;
+    --border:#8292d7;
   }
 
   * { box-sizing:border-box; } /*The browser shrinks the content area inside so padding/border fit*/
