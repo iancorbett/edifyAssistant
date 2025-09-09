@@ -44,3 +44,5 @@ function cosineSim(a, b) { //a and b are arrays (vectors), each is 512 numbers l
     scored.sort((a, b) => b.score - a.score);//sort from most to least similar
     return scored.slice(0, k);//takes first three from the sorted array
   }
+
+  app.get('/health', (_, res) => res.json({ ok: true }));
