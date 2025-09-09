@@ -1,4 +1,4 @@
-export const KnowledgeBase = [
+export const KB = [
 
     // 🟢 Onboarding
     {
