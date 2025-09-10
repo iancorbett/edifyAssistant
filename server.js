@@ -46,3 +46,6 @@ function cosineSim(a, b) { //a and b are arrays (vectors), each is 512 numbers l
   }
 
   app.get('/health', (_, res) => res.json({ ok: true }));
+
+  const PORT = process.env.PORT || 8787;
+  app.listen(PORT, () => console.log(`LLM fallback server on :${PORT}`));
