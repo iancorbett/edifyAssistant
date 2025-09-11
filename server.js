@@ -74,6 +74,15 @@ function cosineSim(a, b) { //a and b are arrays (vectors), each is 512 numbers l
               { role: 'user', content: user }
             ]
           });
+          const answer = completion.choices[0]?.message?.content?.trim() || "Sorry, I don't know.";
+          res.json({
+            answer,
+            retrieved: hits.map(h => ({ id: h.ref.id, title: h.ref.title, score: +h.score.toFixed(3) }))
+          });
+        } catch (e) {
+          console.error(e);
+          res.status(500).json({ error: 'server_error' });
+        }
   });
 
   const PORT = process.env.PORT || 8787;
