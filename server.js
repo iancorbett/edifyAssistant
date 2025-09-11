@@ -52,6 +52,9 @@ function cosineSim(a, b) { //a and b are arrays (vectors), each is 512 numbers l
         const { message } = req.body;
         if (!message) return res.status(400).json({ error: 'missing message' });
     
+        const [qEmb] = await embedAll([message]);
+        const hits = topK(qEmb, 3);
+    
   });
 
   const PORT = process.env.PORT || 8787;
