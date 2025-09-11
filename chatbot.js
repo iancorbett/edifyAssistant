@@ -67,7 +67,7 @@ function addMsg(text, who = "bot") {
           if (score > bestScore) { bestScore = score; bestIdx = i; } //Keeps track of the highest score (bestScore) and its index (bestIdx)
         }  
         const THRESHOLD = 0.47; // decide whether any question is similar enough
-        if (bestScore < THRESHOLD) return "I’m not totally sure 🤔 — can you rephrase?"; //limitation of a semantic search bot, only able to answer questions similar to whats in the knowledge base
+        if (bestScore < THRESHOLD) return await llmFallback(userText);
         return KB[bestIdx].a + `\n\n(score: ${bestScore.toFixed(2)})`;
       }
 
