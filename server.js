@@ -63,6 +63,8 @@ function cosineSim(a, b) { //a and b are arrays (vectors), each is 512 numbers l
           Use ONLY the provided context to answer. 
           If the context is insufficient, say you don't know and suggest contacting support. 
           Keep answers concise and actionable.`;
+
+          const user = `User question:\n${message}\n\nContext:\n${context}`;//provide message and closest matches
   });
 
   const PORT = process.env.PORT || 8787;
