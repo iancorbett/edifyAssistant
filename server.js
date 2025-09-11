@@ -65,6 +65,15 @@ function cosineSim(a, b) { //a and b are arrays (vectors), each is 512 numbers l
           Keep answers concise and actionable.`;
 
           const user = `User question:\n${message}\n\nContext:\n${context}`;//provide message and closest matches
+
+          const completion = await openai.chat.completions.create({
+            model: 'gpt-4o-mini',
+            temperature: 0.2, //higher value more random,lower value more focised
+            messages: [
+              { role: 'system', content: system },
+              { role: 'user', content: user }
+            ]
+          });
   });
 
   const PORT = process.env.PORT || 8787;
