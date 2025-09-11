@@ -58,6 +58,11 @@ function cosineSim(a, b) { //a and b are arrays (vectors), each is 512 numbers l
         const context = hits.map((h, i) => //format the kb snippets
             `[Doc ${i+1} | score=${h.score.toFixed(2)}]\nTitle: ${h.ref.title}\nQ: ${h.ref.q}\nA: ${h.ref.a}`
           ).join('\n\n');
+
+          const system = `You are Edify's support assistant. 
+          Use ONLY the provided context to answer. 
+          If the context is insufficient, say you don't know and suggest contacting support. 
+          Keep answers concise and actionable.`;
   });
 
   const PORT = process.env.PORT || 8787;
