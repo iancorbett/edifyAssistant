@@ -86,5 +86,25 @@ function addMsg(text, who = "bot") {
       sendBtn.addEventListener("click", send);
       msgEl.addEventListener("keydown", e => { if (e.key === "Enter") send(); });
 
+      async function llmFallback(message) {
+        try {
+          const resp = await fetch('http://localhost:8787/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+          });
+          const data = await resp.json();
+          if (data.error) return "Sorry — I'm having trouble right now.";
+      
+          if (data.retrieved?.length) {
+            const refs = data.retrieved.map(r => `• ${r.title} (score ${r.score})`).join('\n');
+            return `${data.answer}\n\n_Refs:_\n${refs}`;
+          }
+          return data.answer;
+        } catch {
+          return "Hmm, the help service isn't responding. Try again in a bit.";
+        }
+      }
+
     addSpinner();
     loadModel();
