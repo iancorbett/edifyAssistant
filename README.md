@@ -2,6 +2,11 @@
 
 ---
 
+<img width="1147" height="713" alt="Screenshot 2025-09-11 at 5 43 55 PM" src="https://github.com/user-attachments/assets/2b960e3a-93e1-4006-92cb-44c9e5d61aca" />
+
+---
+
+
 A hybrid chatbot that combines semantic search (fast FAQ lookup with TensorFlow.js) and an LLM fallback (OpenAI GPT-4o-mini with KB grounding).
 
 ---
