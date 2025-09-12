@@ -1,14 +1,20 @@
-Edify Assistant
+## **Edify Assistant
+
+---
 
 A hybrid chatbot that combines semantic search (fast FAQ lookup with TensorFlow.js) and an LLM fallback (OpenAI GPT-4o-mini with KB grounding).
 
-Frontend (chatbot.js)
+---
+
+**Frontend (chatbot.js)**
 
 Runs in the browser with TensorFlow.js + Universal Sentence Encoder.
 
 Finds the closest KB entry and answers instantly if similarity ≥ threshold.
 
-Backend (server.js)
+---
+
+**Backend (server.js)**
 
 Node/Express server with OpenAI API.
 
@@ -16,19 +22,23 @@ When no close KB match is found, the frontend POSTs to /ask.
 
 The server embeds the user query, retrieves top-k KB entries, and calls GPT-4o-mini to answer grounded in the KB.
 
-🚀 Features
+---
 
-🔎 Semantic search in browser → instant KB answers.
+## Features
 
-🧠 LLM fallback for out-of-scope questions.
+**Semantic search in browser → instant KB answers.**
 
-📦 KB stored in JSON (kb.json) → single source of truth.
+**LLM fallback for out-of-scope questions.**
 
-🔒 API key safe → only used on backend, never exposed to browser.
+**KB stored in JSON (kb.json) → single source of truth.**
 
-⚡ Hybrid design → cheap, fast, and still smart.
+**API key safe → only used on backend, never exposed to browser.**
 
-📂 Project Structure
+**Hybrid design → cheap, fast, and still smart.**
+
+---
+
+## Project Structure
 edify-help-bot/
 ├── public/
 │   ├── index.html      # UI
@@ -42,7 +52,9 @@ edify-help-bot/
 ├── package.json
 └── README.md
 
-⚙️ Setup
+---
+
+## Setup
 1. Clone & install
 git clone https://github.com/your-username/edify-help-bot.git
 cd edify-help-bot
@@ -77,7 +89,9 @@ http://localhost:8787/health
 
 Open public/index.html in a browser (or serve with Live Server / vite / any static server).
 
-🧩 Usage
+---
+
+## Usage
 
 Ask a question that exists in KB (e.g., “how do I reset my password”).
 → Semantic search answers instantly.
@@ -85,7 +99,9 @@ Ask a question that exists in KB (e.g., “how do I reset my password”).
 Ask something random (“how do I cook a beef stew”).
 → Falls back to backend /ask, embeds + retrieves KB, and GPT-4o-mini replies with grounded context.
 
-🔧 Config
+---
+
+## Config
 
 Threshold: in chatbot.js
 
@@ -101,7 +117,9 @@ function topK(queryEmb, k = 3) { ... }
 
 Defaults to 3 KB entries per LLM request.
 
-🛡️ Notes
+---
+
+## Notes
 
 Keep .env out of git. Share .env.example for setup.
 
@@ -111,7 +129,9 @@ Frontend only uses KB for local search; backend uses KB for retrieval + LLM cont
 
 CORS is enabled in server.js → frontend and backend can run separately during dev.
 
-🗺️ Roadmap
+---
+
+## Roadmap
 
  Add support ticket creation for unanswered queries.
 
